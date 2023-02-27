@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ -f "/usr/bin/borgmatic" ]; then
+  echo '<<<borgmatic_backup>>>'
+  BMCMD="$(borgmatic list 2> tee | tail -n1 | grep -P '\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d' -o)"
+  if [ $? -eq 0 ]; then
+    D=$(date -d "$BMCMD" "+%s")
+    echo "$D"
+  else
+    echo "0"
+  fi
+fi
