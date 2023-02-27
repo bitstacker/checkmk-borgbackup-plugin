@@ -1,0 +1,1 @@
+# checkmk-borgbackup-plugin
